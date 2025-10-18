@@ -1,0 +1,21 @@
+name: 获取用户列表
+method: GET
+url: https://api.example.com/users
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {token}
+params:
+  page: 1
+  size: 10
+description: 分页获取用户列表并验证响应
+
+assertions:
+  status_code: 200
+
+  body:
+    code: 0
+    message: "success"
+    data.total: 100
+    data.list:
+      type: array
+      min_length: 1

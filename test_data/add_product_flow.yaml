@@ -1,0 +1,25 @@
+name: 新增商品
+method: POST
+url: http://!host:!port/products
+headers:
+  Content-Type: application/json
+body:
+  json:
+    name: "!name"
+    price: "!price"
+assert_options:
+  - target: $.name
+    value: "!name"
+    type: equal
+    errorMsg: "商品名称错误"
+
+extract_options:
+  - target: $.id
+    varname: productId
+
+
+ddts:
+  - name: 商品名称
+    price: 9999.9
+    desc: "正常场景1"
+

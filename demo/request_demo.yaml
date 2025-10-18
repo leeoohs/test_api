@@ -1,0 +1,8 @@
+method: POST
+url: http://httpbin.org/get
+headers:
+    Accept: application/json
+    Content-Type: application/json
+json:
+    name: "test"
+    price: 10

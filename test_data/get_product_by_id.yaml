@@ -1,0 +1,13 @@
+context:
+  host: 117.72.115.136
+  port: 8003
+
+steps:
+  - !include /Users/huangdaxianer/Downloads/project/test_api/test_data/add_product_flow.yaml
+  - method: GET
+    url: http://!host:!port/products/!product_id
+    assert_options:
+      - target: $.Id
+        value: "!product_id"
+        type: equal
+        errorMsg: "商品id不一样"

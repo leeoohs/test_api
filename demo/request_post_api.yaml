@@ -1,0 +1,16 @@
+name: 创建新用户
+method: POST
+url: https://api.example.com/users
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {token}
+# 请求体（POST/PUT 等方法常用，支持 JSON 结构）
+body:
+  json:
+    username: "zhangsan"
+    email: "zhangsan@example.com"
+    age: 25
+    roles:
+      - "user"
+      - "editor"
+description: 创建一个包含用户名、邮箱和角色的新用户

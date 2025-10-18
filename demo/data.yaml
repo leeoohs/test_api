@@ -1,0 +1,39 @@
+#字符串
+name: daxian
+
+#bool
+is_good: true
+is_bad: false
+
+#int
+num: 10
+
+#float
+float_num: 10.1
+dig_num: 31415e-5
+
+#null
+null_num: ~
+
+#对象
+person:
+  name: daxian
+  age: 18
+  man: false
+  hobby:
+    - 足球
+    - 篮球
+    - 羽毛球
+  address: [北京, 朝阳]
+  info:
+    -
+      - 2
+      - 3
+      - 4
+    -
+      - 6
+      - 7
+      - 8
+
+person1: {name: daxian, age: 18, man: false}
+
