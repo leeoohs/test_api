@@ -2,7 +2,7 @@ import copy
 
 import yaml
 
-from config.settings import DATA_PATH
+from yaml_framework.config.settings import DATA_PATH
 from yamlinclude import YamlIncludeConstructor
 
 
@@ -37,10 +37,23 @@ def read_caseinfo(yaml_path):
 
 
 YamlIncludeConstructor.add_to_loader_class(loader_class=yaml.FullLoader)
+
+
 def read_full_case(yaml_path):
     '''读取包含include的yaml文件'''
     with open(yaml_path, 'r', encoding='utf-8') as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
+
+        # 处理文件中包含ddts 数据的场景
+        if 'steps' in data:
+            for step in data['steps']:
+                if 'ddts' in step and isinstance(step, dict):
+                    ddts = step.pop('ddts')
+                    # 将ddts 合并到context中
+                    if 'context' not in data:
+                        data['context'] = {}
+                    data['context'].update(ddts[0] if ddts else {})
+
         print(data)
         return data
 

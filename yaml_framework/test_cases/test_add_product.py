@@ -1,9 +1,8 @@
 import pytest
-import yaml
 
-from config.settings import DATA_PATH
-from utils.execute_request import execute_api, execute_api_v2
-from utils.get_case_data import read_caseinfo
+from yaml_framework.config.settings import DATA_PATH
+from yaml_framework.utils.execute_request import execute_api_v2
+from yaml_framework.utils.get_case_data import read_caseinfo
 
 
 caseinfos = read_caseinfo(DATA_PATH + '/../test_data/add_product.yaml')

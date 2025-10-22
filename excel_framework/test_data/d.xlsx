@@ -1,0 +1,2 @@
+project	module	caseid	casename	description	url	method	headers	param	contenttype	assertres	globalvars
+训练营	product	1	product_add	add Nomal	/products	post		"{""name"": ""苏超啤酒"", ""price"": 10}"	application/json		id=$.id

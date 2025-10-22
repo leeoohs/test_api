@@ -145,7 +145,7 @@ def execute_api_v2(api_data):
         assert assert_result, "断言不通过" + assert_option['errorMsg']
 
     # 提取变量给下一个接口使用
-    for extract_option in api_data.get('extract_option', []):
+    for extract_option in api_data.get('extract_options', []):
         target_value = None
         if extract_option['target'].startswith('$'):  # json表达式
             target_value = jsonpath.jsonpath(response.json(), extract_option['target'])
@@ -154,3 +154,17 @@ def execute_api_v2(api_data):
             pass
         context.update({extract_option['varname']: target_value[0]})
         print(f"上下文是：{context}")
+
+
+# V3
+def execute_api_v3(api_data):
+    """
+    :param api_data:
+    :return:
+    """
+    context = api_data['context']
+    for step in api_data.get('steps', []):
+        step.update({"context": context})
+        execute_api_v2(step)
+        if 'context' in step:
+            context.update(step.get('context'))
