@@ -1,5 +1,7 @@
 import requests
 
+from excel_framework.config.setting import HOST
+
 
 class RequestUtil:
     """
@@ -21,6 +23,7 @@ class RequestUtil:
         """
         try:
             result = None
+            url = HOST + url
             if method == 'get':
                 result = requests.get(url=url, headers=headers, params=params, **kwargs)
             elif method == 'post':
