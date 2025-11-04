@@ -35,7 +35,7 @@ class RequestUtil:
                 raise Exception('不支持的请求方式')
             return result
         except Exception as e:
-            raise Exception(f"请求异常：{e}")
+            raise Exception(f"请求异常：{str(e)} | URL：{url} | 方法：{method}")
 
 
 if __name__ == '__main__':
